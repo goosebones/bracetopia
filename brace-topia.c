@@ -24,7 +24,7 @@
 #define DEFAULT_DIMENSION 15
 #define DEFAULT_STRENGTH_PREFERENCE 50
 #define DEFAULT_VACANCY 20.0
-#define DEFAULT_ENDLINE 60
+#define DEFAULT_ENDLINE 60.0
 
 
 /*
@@ -41,7 +41,7 @@ void printHelpUsage() {
 		"'-d dim'    15        -d 7      width and height dimension.\n"
 		"'-s %%str'   50        -s 30     strength of preference.\n"
 		"'-v %%vac'   20        -v30      percent vacancies.\n"
-		"'-e %%end1'  60        -e75      percent Endline braces. Others want Newline.\n"
+		"'-e %%endl'  60        -e75      percent Endline braces. Others want Newline.\n"
 		);
 }
 
