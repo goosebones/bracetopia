@@ -1,0 +1,72 @@
+Assignment Report
+Assignment name is: Brace-topia
+
+My name is: Gunther Kroth 
+My login ID is:	gdk6217
+
+[insert your answers after the question and add more lines as needed.]
+
+[PLEASE MAKE YOUR ANSWERS SHORT AND TO THE POINT. BULLET POINTS ARE GOOD.]
+
+============= PROGRAM STATUS ==============
+
+What is the status of the program?
+Does it: put an X inside the [] for your answer
+	[] crash?
+	[] infinite loop when it should not?
+	[] only work in printed mode?
+	[X] work fine?
+	[] only implement these options: [list them below]
+	[] other? Explain below.
+
+
+How does your move algorithm work? Describe briefly in English.
+
+Start at top left looking for 'e' or 'n' moving left to right top to bottom.
+If an inhabitant's happiness is less than the given (or default), a move is attempted.
+Starting at top left looking for a vacant spot, moving left to right top to bottom.
+A hypothetical happiness is calculated that shows what it would be if the inhabitant moved there. 
+If the new happiness rating is greater than or equal to the current, the moves takes place.
+The old spot is marked with a '*' to prevent any others from moving there during the cycle.
+
+
+============= SIMULATION ANALYSIS ==============
+
+What did you find most revealing about the simulation?
+
+- most inhabitants will want to move each cycle
+- getting a rating close to 1 is hard
+
+
+============= GENERAL PROJECT FEEDBACK ==============
+
+What did I learn?
+
+- Command line argument processing.
+- array shuffles
+- working with arrays in c
+
+
+What was easy about this assignment?
+
+- calculating happiness values for each inhabitant
+- setting up the 2D city array
+- iterating through the 2D city array 
+
+
+What gave you problems or troubles?
+
+- shuffles on a 2D array (I ended up using a 1D and projecting it)
+- moving algorithm
+- command line arguments were tedious to set up
+
+
+What should the instructor do to improve this assignment?
+
+- I'm not comfortable with structs, pointers, and mallocs yet
+- more coverage on these topics before the project is introduced
+
+
+What would you have liked to do in this assignment?
+
+- I wanted to use structs to hold the city and its stats

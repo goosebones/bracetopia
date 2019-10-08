@@ -1,0 +1,104 @@
+#define _DEFAULT_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <getopt.h>
+
+
+
+
+#define SEED 41
+
+
+#define DEFAULT_TIME_DELAY 900000
+#define DEFAULT_MAX_CYCLE -1
+#define DEFAULT_DIMENSION 15
+#define DEFAULT_STRENGTH_PREFERENCE 50
+#define DEFAULT_VACANCY 20
+#define DEFAULT_ENDLINE 60
+
+void printHelpUsage() {
+	fprintf(stderr,
+		"usage:\n"
+		"brace-topia [-h] [-t] [-c N] [-d dim] [-s %%str] [-v %%vac] [-e %%end]\n"
+		"Option      Default   Example   Description\n"
+		"'-h'        NA        -h        print this usage message.\n"
+		"'-t N'      900000    -t 5000   microseconds cycle delay.\n"
+		"'-c N'      NA        -c4       count cycle maximum value.\n"
+		"'-d dim'    15        -d 7      width and height dimension.\n"
+		"'-s %%str'   50        -s 30     strength of preference.\n"
+		"'-v %%vac'   20        -v30      percent vacancies.\n"
+		"'-e %%end1'  60        -e75      percent Endline braces. Others want Newline.\n"
+		);
+}
+
+void printUsage() {
+	fprintf(stderr,
+		"usage:\n"
+		"brace-topia [-h] [-t] [-c N] [-d dim] [-s %%str] [-v %%vac] [-e %%end]\n"
+		);
+}
+
+
+int main(int argc, char * argv[]) {
+	long int timeDelay = DEFAULT_TIME_DELAY;
+	int maxCycle = DEFAULT_MAX_CYCLE;
+	int dimension = DEFAULT_DIMENSION;
+	int strengthPreference = DEFAULT_STRENGTH_PREFERENCE;
+	int vacancy = DEFAULT_VACANCY;
+	int endlineRatio = DEFAULT_ENDLINE;
+
+	int opt;
+	int temp;
+	while ((opt = getopt(argc, argv, "ht:c:d:s:v:e:")) != -1) {
+		switch(opt) {
+		case 'h':
+			printHelpUsage();
+			return 0;
+		case 't':
+			//time delay
+			temp = (long int)strtol(optarg, NULL, 10);
+			if (temp <= 0) {
+				break;
+			} else {
+				timeDelay = temp;
+				break;
+			}
+		case 'c':
+			//max cycles
+			temp = (int)strtol(optarg, NULL, 10);
+			if (temp < 0) {
+				fprintf(stderr, "c must be positive");
+			} else {
+				maxCycle = temp;
+				break;
+			}
+		case 'd':
+			//dimensions
+			temp = (int)strtol(optarg, NULL, 10);
+			if (temp < 5 || temp > 39) {
+				fprintf(stderr, " cant be outside");
+				break;
+			}
+		case 's':
+			//preference strength
+			break;
+		case 'v':
+			//vacancy percent
+			break;
+		case 'e':
+			//endline percent, newline percent
+			break;
+		default:
+			printUsage();
+			return (EXIT_FAILURE);
+		}
+	}
+
+	srandom(SEED);
+
+	//char city[grid][grid];
+	int i, row, col;
+
+	// place initial characters	
+	return(0);
+}
