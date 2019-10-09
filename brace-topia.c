@@ -333,8 +333,10 @@ int move(int row, int col, int dim, char city[][dim]) {
 			// possible move-in spot
 			char slot = city[x][y];
 			if (slot == '.') {
+				city[row][col] = '.';
 				// in this vacant spot, check to see if move is beneficial
 				float possibleHappy = getHappyMeasure(x, y, dim, city, c);
+				city[row][col] = c;
 				if (possibleHappy >= currentHappy) {
 					city[x][y] = c;
 					city[row][col] = '*';
@@ -414,6 +416,7 @@ void nextCycle(int dim, char city[][dim], float measure) {
 			char c = city[row][col];
 			if (c != '.') {
 				float happy = getHappyMeasure(row, col, dim, city, c);
+				city[row][col] = c;
 				if (happy < measure) {
 					move(row, col, dim, city);
 				}
