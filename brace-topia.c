@@ -198,6 +198,16 @@ int notVacant(char c) {
 	}
 }
 
+/*
+* determine if c1 is friendly to c2
+* used when chars are marked with capital letters
+* e : e or E
+* n : n or N
+*
+* @param c1 first character
+* @param c2 second character
+* @return 1 if friendly, 0 otherwise
+*/
 int friendlyBrace(char c1, char c2 ) {
 	// is c1 friendly with c2
 	if (c1 == 'e' || c1 == 'E') {
@@ -329,6 +339,14 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 	return happyRatio;
 }
 
+
+/*
+* get the capital version of a char
+* used to makr chars that moved during a cycle
+*
+* @param c char to convert to uppercase
+* @return uppercase version of char
+*/
 char mark(char c) {
 	return c - 32;
 }
