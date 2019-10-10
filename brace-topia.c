@@ -417,7 +417,7 @@ void nextCycle(int dim, char city[][dim], float measure) {
 			if (c != '.') {
 				float happy = getHappyMeasure(row, col, dim, city, c);
 				city[row][col] = c;
-				if (happy < measure) {
+				if (happy <= measure) {
 					move(row, col, dim, city);
 				}
 			}
