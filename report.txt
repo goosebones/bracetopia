@@ -28,7 +28,8 @@ How does your move algorithm work? Describe briefly in English.
 - a hypothetical happiness ratings are caclulated at vacant spots
 - if the hypothetical is greater than the current happiness, the move executes
 - old location is marked with a '*' to prevent any others moving there during the cycle
-- '*' marks are cleared at the end of the cycle
+- the moved char is marked to prevent it from moving again during the cycle
+- '*' marks and char marks are cleared at the end of the cycle
 
 
 ============= SIMULATION ANALYSIS ==============

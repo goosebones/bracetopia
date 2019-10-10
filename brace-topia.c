@@ -198,6 +198,26 @@ int notVacant(char c) {
 	}
 }
 
+int friendlyBrace(char c1, char c2 ) {
+	// is c1 friendly with c2
+	if (c1 == 'e' || c1 == 'E') {
+		if (c2 == 'e' || c2 == 'E') {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	if (c1 == 'n' || c1 == 'N') {
+		if (c2 == 'n' || c2 == 'N') {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	return 0;
+}
 
 /*
 * get the happiness measure at a specific city location
@@ -220,7 +240,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 		char n = city[row - 1][col];
 		if (notVacant(n)) {
 			totalNeighbors++;
-			if (n == brace) {
+			if (friendlyBrace(n, brace)) {
 				goodNeighbors++;
 			}
 		}
@@ -229,7 +249,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 			char nw = city[row - 1][col - 1];
 			if (notVacant(nw)) {
 				totalNeighbors++;
-				if (nw == brace) {
+				if (friendlyBrace(nw, brace)) {
 					goodNeighbors++;
 				}
 			}
@@ -239,7 +259,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 			char ne = city[row - 1][col + 1];
 			if (notVacant(ne)) {
 				totalNeighbors++;
-				if (ne == brace) {
+				if (friendlyBrace(ne, brace)) {
 					goodNeighbors++;
 				}
 			}
@@ -251,7 +271,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 		char s = city[row + 1][col];
 		if (notVacant(s)) {
 			totalNeighbors++;
-			if (s == brace) {
+			if (friendlyBrace(s, brace)) {
 				goodNeighbors++;
 			}
 		}
@@ -260,7 +280,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 			char sw = city[row + 1][col - 1];
 			if (notVacant(sw)) {
 				totalNeighbors++;
-				if (sw == brace) {
+				if (friendlyBrace(sw, brace)) {
 					goodNeighbors++;
 				}
 			}
@@ -270,7 +290,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 			char se = city[row + 1][col + 1];
 			if (notVacant(se)) {
 				totalNeighbors++;
-				if (se == brace) {
+				if (friendlyBrace(se, brace)) {
 					goodNeighbors++;
 				}
 			}
@@ -282,7 +302,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 		char e = city[row][col + 1];
 		if (notVacant(e)){
 			totalNeighbors++;
-			if (e == brace) {
+			if (friendlyBrace(e, brace)) {
 				goodNeighbors++;
 			}
 		}
@@ -293,7 +313,7 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 		char w = city[row][col - 1];
 		if (notVacant(w)) {
 			totalNeighbors++;
-			if (w == brace) {
+			if (friendlyBrace(w, brace)) {
 				goodNeighbors++;
 			}
 		}
@@ -307,6 +327,10 @@ float getHappyMeasure(int row, int col, int dim, char city[][dim], char brace) {
 	}
 
 	return happyRatio;
+}
+
+char mark(char c) {
+	return c - 32;
 }
 
 
@@ -338,7 +362,7 @@ int move(int row, int col, int dim, char city[][dim]) {
 				float possibleHappy = getHappyMeasure(x, y, dim, city, c);
 				city[row][col] = c;
 				if (possibleHappy >= currentHappy) {
-					city[x][y] = c;
+					city[x][y] = mark(c);
 					city[row][col] = '*';
 					return 1;
 				}
@@ -368,6 +392,12 @@ int clearMarkedVacants(int dim, char city[][dim]) {
 			if (c == '*') {
 				city[row][col] = '.';
 				count++;
+			}
+			if (c == 'N') {
+				city[row][col] = 'n';
+			}
+			if (c == 'E') {
+				city[row][col] = 'e';
 			}
 		}
 	}
@@ -414,7 +444,7 @@ void nextCycle(int dim, char city[][dim], float measure) {
 	for (int row = 0; row < dim; row++) {
 		for (int col = 0; col < dim; col++) {
 			char c = city[row][col];
-			if (c != '.') {
+			if (c == 'e' || c == 'n') {
 				float happy = getHappyMeasure(row, col, dim, city, c);
 				city[row][col] = c;
 				if (happy <= measure) {
