@@ -463,7 +463,7 @@ int main(int argc, char * argv[]) {
 			if (temp < 0) {
 				fprintf(stderr, "count (%d) must be a non-negative integer.\n", temp);
 				printUsage();
-				return (EXIT_FAILURE);
+				return (1 + EXIT_FAILURE);
 			} else {
 				maxCycle = temp;
 				break;
@@ -474,7 +474,7 @@ int main(int argc, char * argv[]) {
 			if (temp < 5 || temp > 39) {
 				fprintf(stderr, "dimension (%d) must be a value in [5...39]\n", temp);
 				printUsage();
-				return (EXIT_FAILURE);
+				return (1 + EXIT_FAILURE);
 			} else {
 				dimension = temp;
 				break;
@@ -485,7 +485,7 @@ int main(int argc, char * argv[]) {
 			if (temp <= 0 || temp >99 ) {
 				fprintf(stderr, "preference strength (%d) must be a value in [1...99]\n", temp);
 				printUsage();
-				return (EXIT_FAILURE);
+				return (1 + EXIT_FAILURE);
 			} else {
 				strengthPreference = temp;
 				break;
@@ -496,7 +496,7 @@ int main(int argc, char * argv[]) {
 			if (temp <=0 || temp > 99) {
 				fprintf(stderr, "vacancy (%d) must be a value in [1...99]\n", temp);
 				printUsage();
-				return (EXIT_FAILURE);
+				return (1 + EXIT_FAILURE);
 			} else {
 				vacancy = temp;
 				break;
@@ -507,7 +507,7 @@ int main(int argc, char * argv[]) {
 			if (temp <=0 || temp > 99) {
 				fprintf(stderr, "endline proportion (%d) must be a value in [1...99]\n", temp);
 				printUsage();
-				return (EXIT_FAILURE);
+				return (1 + EXIT_FAILURE);
 			} else {
 				endlineRatio = temp;
 				break;
