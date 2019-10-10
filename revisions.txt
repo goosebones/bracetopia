@@ -1,3 +1,9 @@
+commit 77dd6b3f96b72c17c36f0c6d62f6410bb6992c86
+Author: Gunther David Kroth <gdk6217@cs.rit.edu>
+Date:   Wed Oct 9 10:11:07 2019 -0400
+
+    improved move algorithm by fixing hypothetical happiness measure calculation brace-topia.c:336
+
 commit 5ecc1f57f8025705fcdaa5442845f6528dead773
 Author: Gunther David Kroth <gdk6217@cs.rit.edu>
 Date:   Tue Oct 8 19:50:37 2019 -0400

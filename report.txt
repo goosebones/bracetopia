@@ -22,12 +22,13 @@ Does it: put an X inside the [] for your answer
 
 How does your move algorithm work? Describe briefly in English.
 
-Start at top left looking for 'e' or 'n' moving left to right top to bottom.
-If an inhabitant's happiness is less than the given (or default), a move is attempted.
-Starting at top left looking for a vacant spot, moving left to right top to bottom.
-A hypothetical happiness is calculated that shows what it would be if the inhabitant moved there. 
-If the new happiness rating is greater than or equal to the current, the moves takes place.
-The old spot is marked with a '*' to prevent any others from moving there during the cycle.
+- search for 'e' and 'n' moving left to right, top to bottom
+- if a happiness is less than the strength preference, attempt to move
+- search for a '.' spot moving left to right, top to bottom
+- a hypothetical happiness ratings are caclulated at vacant spots
+- if the hypothetical is greater than the current happiness, the move executes
+- old location is marked with a '*' to prevent any others moving there during the cycle
+- '*' marks are cleared at the end of the cycle
 
 
 ============= SIMULATION ANALYSIS ==============
@@ -64,10 +65,10 @@ What gave you problems or troubles?
 What should the instructor do to improve this assignment?
 
 - I'm not comfortable with structs, pointers, and mallocs yet
-- more coverage on these topics before the project is introduced
+- more coverage on these topics before the project would have been beneficail
 
 
 What would you have liked to do in this assignment?
 
-- I wanted to use structs to hold the city and its stats
-- My git repository was neglected
+- I wanted to use structs to hold the city and its stats, but wasn't comfortable
+- I forgot to use the git vcs up until the final stages of the project
